@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+data:
+  encryption:
+#    in a real scenario we would use a KMS to provide keys, never a password in a plain text
+    password: sdgjs14+_
+    salt:  13, -11, -88, 20, -110, 113, -2, -8, -15, -99, -23, -10, -10, -74, 1, 11
