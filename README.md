@@ -1,5 +1,5 @@
 ### Requirements
-To run this project and its tests you need to have docker environment setup:
+To run this project and its tests you need to have docker environment setup.
 
 To help with the most common docker issue: ["Docker environment isn't found"](https://stackoverflow.com/questions/61108655/test-container-test-cases-are-failing-due-to-could-not-find-a-valid-docker-envi).
 
