@@ -5,10 +5,10 @@ To help with the most common docker issue: ["Docker environment isn't found"](ht
 Please check first two comments for MacOS and Ubuntu respectively(on ubuntu, don't forget "chmod" mentioned in the comment).
 
 ### Building & Running the project
-Please use "Makefile" file within root dir to execute(or consult on) various commands against the project:
-* build all docker images and run the project (docker compose for compose.yaml + jib docker build maven plugin)
-* run all project tests (maven)
-* run a test API call after service is ran (curl)
+Please use "Makefile" file within root dir(type "make" and then the task e.g. "make tests") to execute(or consult) various commands against the project:
+* runApplicationWithDb - build all docker images and run the project (docker compose for compose.yaml + jib docker build maven plugin)
+* tests - run all project tests (maven)
+* testAPI - run a test API call after service is ran (curl)
 
 ### Project description
 The service provides an API to save user details securely. 
@@ -28,3 +28,8 @@ Tests use embedded container for persistence level testing as well as integratio
 4. Project is built using Maven and Jib for containerization
 5. Project is hosted on GitHub
 6. README
+
+### Extra tasks
+1. Spring JPA is using prepared statements against malicious SQL injection input, apache commons serializer recent version addressed remote code invocation.
+2. GET as well as POST decrypts returning information
+3. Containerized and DB dependency provided as requested. Application waits for database to be ready.

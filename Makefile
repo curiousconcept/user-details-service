@@ -5,7 +5,7 @@ runApplicationWithDb: ## Run application with all dependencies
 	./mvnw compile jib:dockerBuild
 	docker compose up
 
-test: ## Execute the tests
+tests: ## Execute the tests
 	./mvnw clean test
 
 testAPI: ## Run one example to check API is working (please deploy using runApplicationWithDb)
