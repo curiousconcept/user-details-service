@@ -7,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Web component responsible for processing GET/POST REST API Requests to save
+ * and retrieve {@link UserDetails} via {@link UserDetailsResource}
+ */
 @RestController
 @RequestMapping(path = "/api/v1/users-details")
 public class UserDetailsController {
@@ -39,9 +43,9 @@ public class UserDetailsController {
     protected static UserDetailsResource getResourceFrom(Pair<Long, UserDetails> userDetailsPair) {
         UserDetails userDetails = userDetailsPair.getSecond();
         return new UserDetailsResource(userDetailsPair.getFirst(),
-                                       userDetails.getEmail(),
-                                       userDetails.getName(),
-                                       userDetails.getSurname());
+                                       userDetails.email(),
+                                       userDetails.name(),
+                                       userDetails.surname());
     }
 
     protected static UserDetails getUserDetailsPairFrom(UserDetailsResource userDetailsResource) {

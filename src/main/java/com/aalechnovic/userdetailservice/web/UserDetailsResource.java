@@ -2,6 +2,9 @@ package com.aalechnovic.userdetailservice.web;
 
 import java.util.Objects;
 
+/**
+ * Web resource representation of {@link com.aalechnovic.userdetailservice.domain.UserDetails}
+ */
 public class UserDetailsResource {
 
     private final Long id;

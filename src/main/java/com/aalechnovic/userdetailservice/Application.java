@@ -3,6 +3,9 @@ package com.aalechnovic.userdetailservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Application Launcher
+ */
 @SpringBootApplication
 public class Application {
 

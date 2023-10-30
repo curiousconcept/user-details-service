@@ -57,9 +57,9 @@ class EncryptingUserDetailsServiceTest {
         assertThat(userIdAndDetailsPair).isNotNull();
         assertThat(userIdAndDetailsPair.getFirst()).isNotNull();
         assertThat(userIdAndDetailsPair.getSecond()).isNotNull();
-        assertThat(userIdAndDetailsPair.getSecond().getEmail()).isEqualTo(userDetails.getEmail());
-        assertThat(userIdAndDetailsPair.getSecond().getSurname()).isEqualTo(userDetails.getSurname());
-        assertThat(userIdAndDetailsPair.getSecond().getName()).isEqualTo(userDetails.getName());
+        assertThat(userIdAndDetailsPair.getSecond().email()).isEqualTo(userDetails.email());
+        assertThat(userIdAndDetailsPair.getSecond().surname()).isEqualTo(userDetails.surname());
+        assertThat(userIdAndDetailsPair.getSecond().name()).isEqualTo(userDetails.name());
     }
 
     /*
@@ -85,7 +85,7 @@ class EncryptingUserDetailsServiceTest {
 
         assertThat(userIdAndDetailsPair.get().getFirst()).isNotNull().isEqualTo(1L);
         assertThat(userIdAndDetailsPair.get().getSecond()).isNotNull();
-        assertThat(userIdAndDetailsPair.get().getSecond().getName()).isEqualTo("testname");
+        assertThat(userIdAndDetailsPair.get().getSecond().name()).isEqualTo("testname");
 
     }
 

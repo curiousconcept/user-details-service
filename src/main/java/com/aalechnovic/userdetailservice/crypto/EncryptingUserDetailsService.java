@@ -10,6 +10,11 @@ import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import java.util.Optional;
 
+/**
+ * Encrypting User Details Service which main purpose is to save provided {@link UserDetails} securely via encryption.
+ * It relies on a single password for encryption (for simplicity) which (ideally) should be obtained remotely.
+ *
+ */
 public class EncryptingUserDetailsService {
 
     private final EncryptedUserDetailsRepository encryptedUserDetailsRepository;
@@ -27,6 +32,12 @@ public class EncryptingUserDetailsService {
         this.secretKey = this.encryptor.getKeyFromPassword(pwAndSalt.getFirst(), pwAndSalt.getSecond());
     }
 
+    /**
+     * Saves userDetails in the database after the entire object is encrypted and serialized.
+     *
+     * @param userDetails to save
+     * @return userDetails identifier and saved userDetails
+     */
     public Pair<Long, UserDetails> save(UserDetails userDetails) {
 
         final var sealedObjAndRandBytes = encryptor.encryptObject(userDetails, secretKey);
@@ -42,6 +53,12 @@ public class EncryptingUserDetailsService {
         return Pair.of(savedEncryptedUserDetails.getId(), savedUserDetails);
     }
 
+    /**
+     * Finds userDetails by id. Persistence entry is first deserialized, then decrypted before serving.
+     *
+     * @param id of the userDetails
+     * @return userDetails identifier and saved userDetails
+     */
     public Optional<Pair<Long, UserDetails>> findById(Long id){
 
         final var savedEncryptedUserDetails = encryptedUserDetailsRepository.findById(id);

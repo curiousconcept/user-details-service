@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Dependencies instantiation and injection of the components used by the system
+ */
 @Configuration
 public class Config {
 
