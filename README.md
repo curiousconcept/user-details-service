@@ -11,6 +11,12 @@ Please use "Makefile" file within root dir(type "make" and then the task e.g. "m
 * tests - run all project tests (maven)
 * testAPI - run a test API call after service is ran (curl)
 
+### Inspecting the database
+
+mysql -h localhost -P 3306 --protocol=tcp -u root -pasfgASFA42
+USE main;
+SELECT * FROM encrypted_user_details;
+
 ### Project description
 The service provides an API to save user details securely. 
 It allows to create new user details and fetch them by id. 
