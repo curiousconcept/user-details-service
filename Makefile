@@ -11,6 +11,3 @@ test: ## Execute the tests
 testAPI: ## Run one example to check API is working (please deploy using runApplicationWithDb)
 	 curl --location 'localhost:8080/api/v1/users-details' --header 'Content-Type: application/json' --data '{"email" : "curltest@curltest.test","name": "Curl Test Name", "surname" : "Curl Test Surname"}'
 
-cleanUpDockerVolumes:   ## WARNING! This will clean all docker volumes!
-	 docker volume rm $(docker volume ls -q)
-
