@@ -22,8 +22,13 @@ public class EncryptedUserDetails {
     private EncryptedUserDetails() {
     }
 
-    public EncryptedUserDetails(Long id, byte[] randomCryptBytes, byte[] userDetails) {
+    // Tests only
+    protected EncryptedUserDetails(Long id, byte[] randomCryptBytes, byte[] userDetails){
+        this(randomCryptBytes, userDetails);
         this.id = id;
+    }
+
+    public EncryptedUserDetails(byte[] randomCryptBytes, byte[] userDetails) {
         this.randomCryptBytes = randomCryptBytes;
         this.userDetails = userDetails;
     }

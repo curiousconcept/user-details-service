@@ -22,7 +22,7 @@ class EncryptedUserDetailsRepositoryTest {
         byte[] randomBytes = new byte[16];
         new SecureRandom().nextBytes(randomBytes);
 
-        EncryptedUserDetails encryptedUserDetails = new EncryptedUserDetails(null, randomBytes, randomBytes);
+        EncryptedUserDetails encryptedUserDetails = new EncryptedUserDetails(randomBytes, randomBytes);
 
         EncryptedUserDetails savedDetails = encryptedUserDetailsRepository.save(encryptedUserDetails);
 
@@ -33,30 +33,20 @@ class EncryptedUserDetailsRepositoryTest {
     }
 
     @Test
-    public void overwriteUserDetails_OK(){
+    public void savedUserDetailsCanBeFound(){
         byte[] randomBytes = new byte[16];
         new SecureRandom().nextBytes(randomBytes);
 
-        EncryptedUserDetails encryptedUserDetails = new EncryptedUserDetails(null,randomBytes, randomBytes);
+        EncryptedUserDetails encryptedUserDetails = new EncryptedUserDetails(randomBytes, randomBytes);
 
         EncryptedUserDetails savedDetails = encryptedUserDetailsRepository.save(encryptedUserDetails);
 
         assertThat(savedDetails).isNotNull();
         assertThat(savedDetails.getId()).isNotNull();
-        assertThat(savedDetails.getUserDetails()).isEqualTo(randomBytes);
-        assertThat(savedDetails.getRandomCryptBytes()).isEqualTo(randomBytes);
 
-        byte[] randomOtherBytes = new byte[16];
-        new SecureRandom().nextBytes(randomOtherBytes);
+        var foundUserDetails = encryptedUserDetailsRepository.findById(savedDetails.getId());
 
-        EncryptedUserDetails encryptedUserDetailsToOverwrite = new EncryptedUserDetails(savedDetails.getId(), randomOtherBytes, randomOtherBytes);
-
-        EncryptedUserDetails overwrittenSavedUserDetails = encryptedUserDetailsRepository.save(encryptedUserDetailsToOverwrite);
-
-        assertThat(overwrittenSavedUserDetails).isNotNull();
-        assertThat(overwrittenSavedUserDetails.getId()).isNotNull().isEqualTo(savedDetails.getId());
-        assertThat(overwrittenSavedUserDetails.getUserDetails()).isEqualTo(randomOtherBytes);
-        assertThat(overwrittenSavedUserDetails.getRandomCryptBytes()).isEqualTo(randomOtherBytes);
-
+        assertThat(foundUserDetails.isPresent()).isTrue();
+        assertThat(foundUserDetails.get().getId()).isEqualTo(savedDetails.getId());
     }
 }
